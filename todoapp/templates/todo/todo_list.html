@@ -1,10 +1,15 @@
-{% extends 'base.html' %}
-
-
-{% block content %}
-   {% for todo in todos %}
-        <p> {{ todo }} </p>
-        {% endfor %}
-        
+{% extends 'base.html' %} {% block content %}
+<div>
+  <ul>
+    {% for todo in todos %}
+    <a href="{% url 'update' todo.id %}">
+      {% if todo.completed %}
+      <li><del>{{ todo }}</del></li>
+      {% else %}
+      <li>{{ todo }}</li>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </ul>
+</div>
 {% endblock content %}
-    
